@@ -1,0 +1,11 @@
+<nav class="nav flex-column">
+  <a
+    *ngFor="let item of items"
+    [routerLink]="[item.link]"
+    [queryParams]="caseId"
+    routerLinkActive='active'
+    [ngClass]="[item.class ? item.class : '']">
+
+    <div class="item-text"><i class="material-icons" *ngIf="item.icon">{{item.icon}}</i>{{item.name}}</div>
+  </a>
+</nav>
