@@ -3,7 +3,7 @@ import {RouterModule} from '@angular/router';
 import { TransferHttpCacheModule } from '@nguniversal/common';
 
 import { WebsiteComponent } from './website.component';
-import { SharedModule } from '../shared';
+import { SharedModule } from '../shared/shared.module';
 import { NavComponent } from './nav/nav.component';
 import { WebsiteContentComponent } from './website-content.component'
 
@@ -32,4 +32,4 @@ import { WebsiteContentComponent } from './website-content.component'
   ],
   providers: [],
 })
-export class WebModule { }
+export class WebsiteModule { }

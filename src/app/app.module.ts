@@ -13,7 +13,7 @@ import { CoreModule } from './core/core.module';
     AppComponent
   ],
   imports: [
-    BrowserModule.withServerTransition({appId: 'rs-web'}),
+    BrowserModule.withServerTransition({appId: 'angular-app'}),
     NgbModule.forRoot(),
     AuthModule,
     CoreModule,

@@ -1,6 +1,4 @@
-import { Component, Input, HostListener } from '@angular/core';
-
-import { IntercomComponent } from '../../shared/intercom/intercom.component'
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -8,9 +6,4 @@ import { IntercomComponent } from '../../shared/intercom/intercom.component'
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent {
-  @Input() intercom: IntercomComponent;
-
-  showIntercom() {
-    this.intercom.show();
-  }
 }
