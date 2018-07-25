@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
-import { UserComponent } from './index';
+import {
+  UserComponent,
+  OverviewComponent,
+  AccountComponent
+} from './index';
 
 @NgModule({
   imports: [
@@ -10,7 +14,9 @@ import { UserComponent } from './index';
     UserRoutingModule
   ],
   declarations: [
-    UserComponent
+    UserComponent,
+    OverviewComponent,
+    AccountComponent
   ],
   providers: []
 })
