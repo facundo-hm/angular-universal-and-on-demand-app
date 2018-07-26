@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { UserRoutingModule } from './user-routing.module';
 import {
@@ -7,10 +6,11 @@ import {
   OverviewComponent,
   AccountComponent
 } from './index';
+import { SharedModule } from '../shared/shared.module'
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     UserRoutingModule
   ],
   declarations: [

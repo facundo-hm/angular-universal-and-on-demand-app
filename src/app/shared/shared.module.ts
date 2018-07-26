@@ -5,8 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 
-import { NavbarComponent } from './layout/navbar.component';
-import { SidebarComponent } from './layout/sidebar.component';
+import { NavbarComponent, SidebarComponent } from './index';
 
 @NgModule({
   imports: [
@@ -22,6 +21,7 @@ import { SidebarComponent } from './layout/sidebar.component';
     SidebarComponent
   ],
   exports: [
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,

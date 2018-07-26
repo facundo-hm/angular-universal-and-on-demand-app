@@ -6,6 +6,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  @Input() rootLink: string;
+  @Input() rootItem: { [key: string]: string };
   @Input() items: { [key: string]: string }[];
 }

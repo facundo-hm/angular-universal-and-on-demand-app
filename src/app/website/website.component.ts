@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-website',
   templateUrl: './website.component.html',
   styles: []
 })
-export class WebsiteComponent implements OnInit {
-  public message: string;
+export class WebsiteComponent {
+  rootItem = {
+    name: 'App',
+    link: '/.'
+  };
 
-  constructor() {}
-
-  ngOnInit() {
-    this.message = 'Hello';
-  }
+  navItems = [
+    {
+      name: 'Login',
+      link: '/login'
+    }
+  ]
 }

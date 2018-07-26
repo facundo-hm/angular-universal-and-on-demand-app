@@ -5,4 +5,20 @@ import { Component } from '@angular/core';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent {}
+export class UserComponent {
+  rootItem = {
+    name: 'User App',
+    link: '/user'
+  };
+
+  navItems = [
+    {
+      name: 'Overview',
+      link: './'
+    },
+    {
+      name: 'Acoount',
+      link: './account'
+    }
+  ]
+}
