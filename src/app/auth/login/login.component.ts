@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { UserService, Errors } from '../../core';
 
 @Component({
   selector: 'app-login',
@@ -10,19 +11,32 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LoginComponent {
   isSubmitting = false;
   authForm: FormGroup;
+  errors: Errors;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
+    private userService: UserService
   ) {
     this.authForm = this.fb.group({
-      'username': ['', Validators.required],
+      'email': ['', Validators.required],
       'password': ['', Validators.required]
     });
   }
 
   submitForm() {
-    console.log('submitForm');
+    const credentials = this.authForm.value;
+
+    this.userService
+      .attemptAuth(credentials)
+      .subscribe(
+        user => {
+          this.router.navigateByUrl('/' + user)
+        },
+        err => {
+          this.isSubmitting = false;
+          this.errors = err;
+        }
+      );
   }
 }

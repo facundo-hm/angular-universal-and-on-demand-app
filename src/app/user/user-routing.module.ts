@@ -6,11 +6,14 @@ import {
   OverviewComponent,
   AccountComponent
 } from './index';
+import { UserTypeGuard } from '../core';
 
 const routes: Routes = [
   {
     path: '',
     component: UserComponent,
+    canActivate: [UserTypeGuard],
+    data: { userType: ['user'] },
     children: [
       {
         path: 'account',

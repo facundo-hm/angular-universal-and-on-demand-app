@@ -10,14 +10,14 @@
       <form [formGroup]="authForm" (ngSubmit)="submitForm()">
         <fieldset [disabled]="isSubmitting">
           <div class="form-group">
-            <label for="userName">User name</label>
+            <label for="email">Email</label>
             <input
               type="text"
               class="form-control"
-              id="userName"
-              aria-describedby="userNameHelp"
-              placeholder="User Name"
-              formControlName="username">
+              id="email"
+              aria-describedby="emailHelp"
+              placeholder="Email"
+              formControlName="email">
           </div>
 
           <div class="form-group">

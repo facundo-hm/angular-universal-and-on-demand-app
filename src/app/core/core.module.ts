@@ -5,7 +5,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import {
   HttpTokenInterceptor,
   JwtService,
-  ApiService
+  ApiService,
+  UserService,
+  UserTypeGuard
 } from './index';
 
 @NgModule({
@@ -20,6 +22,8 @@ import {
     },
     JwtService,
     ApiService,
+    UserService,
+    UserTypeGuard
   ],
   declarations: []
 })
