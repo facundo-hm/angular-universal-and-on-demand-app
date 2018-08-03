@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
 import { take, map } from 'rxjs/operators';
 
 import { UserService, Errors } from '../../core';
