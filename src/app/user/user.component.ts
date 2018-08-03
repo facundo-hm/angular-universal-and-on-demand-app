@@ -19,6 +19,10 @@ export class UserComponent {
     {
       name: 'Acoount',
       link: './account'
+    },
+    {
+      name: 'Logout',
+      link: '/logout'
     }
   ]
 }

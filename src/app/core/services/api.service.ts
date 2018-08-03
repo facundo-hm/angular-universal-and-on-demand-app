@@ -4,13 +4,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { JwtService } from './jwt.service';
-
 @Injectable()
 export class ApiService {
   constructor(
-    private http: HttpClient,
-    private jwtService: JwtService
+    private http: HttpClient
   ) {}
 
   private formatErrors(error: any) {

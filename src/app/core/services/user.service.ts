@@ -45,7 +45,7 @@ export class UserService {
       .pipe(map((res) => {
         this.purgeAuth();
         
-        return res.logout;
+        return res;
       }));
   }
 }

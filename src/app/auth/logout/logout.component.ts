@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { UserService, Errors } from '../../core';
 
@@ -6,18 +7,21 @@ import { UserService, Errors } from '../../core';
 	selector: 'app-logout',
 	template: '<div>Logout</div>'
 })
-export class LogoutComponent implements OnInit {
-  constructor (private userService: UserService) {}
-  
-  ngOnInit () {
+export class LogoutComponent{
+  errors: Errors;
+
+  constructor (
+    private userService: UserService,
+    private router: Router
+  ) {
     this.userService
       .logoutAuth()
       .subscribe(
-        res => {
-          console.log(res);
+        () => {
+          this.router.navigateByUrl('/login');
         },
         err => {
-          console.log(err);
+          this.errors = err;
         }
       );
   }
