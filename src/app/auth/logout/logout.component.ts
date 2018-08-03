@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { of } from 'rxjs';
+import { take, map } from 'rxjs/operators';
 
 import { UserService, Errors } from '../../core';
 
@@ -14,15 +16,21 @@ export class LogoutComponent{
     private userService: UserService,
     private router: Router
   ) {
-    this.userService
-      .logoutAuth()
-      .subscribe(
-        () => {
-          this.router.navigateByUrl('/login');
-        },
-        err => {
-          this.errors = err;
-        }
-      );
+    this.userService.isAuthenticated.pipe(take(1), map(isAuthenticated => {
+      if (isAuthenticated) {
+        return this.userService.logoutAuth().subscribe(
+          () => {
+            this.router.navigateByUrl('/');
+          },
+          err => {
+            this.errors = err;
+          }
+        );
+      }
+
+      this.router.navigateByUrl('/login');
+
+      return null;
+    })).subscribe();
   }
 }
