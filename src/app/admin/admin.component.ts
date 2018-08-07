@@ -19,6 +19,10 @@ export class AdminComponent {
     {
       name: 'Acoount',
       link: './account'
+    },
+    {
+      name: 'Logout',
+      link: '/logout'
     }
   ]
 }
