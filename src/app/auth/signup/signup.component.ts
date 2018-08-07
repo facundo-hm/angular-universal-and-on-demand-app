@@ -4,13 +4,13 @@ import { Router } from '@angular/router';
 import { UserService, Errors } from '../../core';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-signup',
+  templateUrl: './signup.component.html',
+  styleUrls: ['./signup.component.scss']
 })
-export class LoginComponent {
+export class SignupComponent {
   isSubmitting = false;
-  authForm: FormGroup;
+  signupForm: FormGroup;
   errors: Errors;
 
   constructor (
@@ -18,17 +18,18 @@ export class LoginComponent {
     private fb: FormBuilder,
     private userService: UserService
   ) {
-    this.authForm = this.fb.group({
+    this.signupForm = this.fb.group({
+      'username': ['', Validators.required],
       'email': ['', Validators.required],
       'password': ['', Validators.required]
     });
   }
 
-  submitForm() {
-    const credentials = this.authForm.value;
+  submitForm () {
+    const credentials = this.signupForm.value;
 
     this.userService
-      .attemptAuth(credentials)
+      .signupAuth(credentials)
       .subscribe(
         user => {
           this.router.navigateByUrl('/' + user)

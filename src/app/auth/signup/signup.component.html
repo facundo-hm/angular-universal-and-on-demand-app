@@ -1,14 +1,24 @@
 <div class="auth-container">
   <div class="row justify-content-md-center">
     <div class="col-6">
-      <h3 class="title">Login</h3>
+      <h3 class="title">Sign Up</h3>
     </div>
   </div>
 
   <div class="row justify-content-md-center">
     <div class="col-6">
-      <form [formGroup]="authForm" (ngSubmit)="submitForm()">
+      <form [formGroup]="signupForm" (ngSubmit)="submitForm()">
         <fieldset [disabled]="isSubmitting">
+          <div class="form-group">
+            <label for="email">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              placeholder="Username"
+              formControlName="username">
+          </div>
+
           <div class="form-group">
             <label for="email">Email</label>
             <input
@@ -33,11 +43,11 @@
           <button
             type="submit"
             class="btn btn-primary btn-block rounded-button"
-            [disabled]="!authForm.valid">
+            [disabled]="!signupForm.valid">
             Submit
           </button>
 
-          <a routerLink="../signup">Sign Up</a>
+          <a routerLink="../login">Login</a>
         </fieldset>
       </form>
     </div>

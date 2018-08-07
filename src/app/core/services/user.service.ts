@@ -15,37 +15,42 @@ export class UserService {
     private apiService: ApiService,
     private jwtService: JwtService
   ) {}
-  setAuth(token: string) {
+  private setAuth (token: string) {
     this.jwtService.saveToken(token);
     this.isAuthenticatedSubject.next(true);
   }
 
-  purgeAuth() {
+  private purgeAuth () {
     this.jwtService.destroyToken();
     this.isAuthenticatedSubject.next(false);
   }
 
-  attemptAuth(credentials): Observable<string> {
-    return this.apiService.post('users/login', { user: credentials })
-      .pipe(map(
-        (data: UserResponse) => {
-          const { user } = data;
+  private handleAuth (data: UserResponse) {
+    const { user } = data;
 
-          this.setAuth(user.token);
+    this.setAuth(user.token);
 
-          const token = this.jwtService.decodeToken();
+    const token = this.jwtService.decodeToken();
 
-          return token.type;
-        }
-    ));
+    return token.type;
   }
 
-  logoutAuth() {
+  attemptAuth (credentials): Observable<string> {
+    return this.apiService.post('users/login', { user: credentials })
+      .pipe(map((data: UserResponse) => this.handleAuth(data)));
+  }
+
+  logoutAuth () {
     return this.apiService.get('users/logout')
       .pipe(map((res) => {
         this.purgeAuth();
         
         return res;
       }));
+  }
+
+  signupAuth (credentials): Observable<string> {
+    return this.apiService.post('users', { user: credentials })
+      .pipe(map((data: UserResponse) => this.handleAuth(data)));
   }
 }

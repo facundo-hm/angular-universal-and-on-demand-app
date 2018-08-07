@@ -27,6 +27,14 @@ body {
   }
 }
 
+.auth-container {
+  text-align: center;
+
+  .form-group {
+    text-align: left;
+  }
+}
+
 .content {
   flex: 1;
 }
